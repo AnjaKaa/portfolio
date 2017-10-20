@@ -1,0 +1,63 @@
+extends ../template
+
+block variables
+	//- var title='Блог'
+
+block content
+	.blog-wrap
+		
+		.blog-wrap__menu-tablet
+			ul.blog-menu-tablet
+		button(type="button").button-menu
+		.flex-wrap-column 
+			header.main-header
+				.main-header__bg
+					img.main-header__bg--img(src="./assets/images/background_mountains.jpg")
+				.main-header__menu
+					button(type="button").hamburger
+						span.hamburger__lines
+					include ../common/menu.pug
+				.main-header__container
+					.main-header__top-row
+						.main-header__social-buttons
+							include ../common/socialButtons.pug
+					.main-header__user
+						.user
+							img.user__main-photo(src='./assets/images/photo.jpg')
+							.user__text-title
+								.title-bg
+								.title2 Блог
+							.user__text-subtitle Статьи, которые я написала
+				button(type="button").main-header__arrow-downs.arrow-down
+			.blog-triangle 
+				svg.triangle(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1000 85" preserveaspectratio="none")
+					polygon.left(points="0,0   0,86   500.8,86   500.8,75.5")
+					polygon.right(points="1000,0   1000,86   500,86   500,75.5")
+			.blog
+				ul.blog__menu
+					.blog-menu
+				.blog__content
+					each article, index in articles
+						if !index
+							.blog__text-block.blog__text-block--active
+								h3.blog__text-title #{article.title}
+								- 
+									var date= new Date(article.date).toLocaleDateString('ru', { 
+													year: 'numeric', 
+													month: '2-digit', 
+													day: '2-digit'
+													})
+								.blog__text-date #{date}
+								.text #{article.text}
+						else
+							.blog__text-block
+								h3.blog__text-title #{article.title}
+								- 
+									var date= new Date(article.date).toLocaleDateString('ru', { 
+													year: 'numeric', 
+													month: '2-digit', 
+													day: '2-digit'
+													})
+								.blog__text-date #{date}
+								.text #{article.text}
+		include ../common/footer.pug

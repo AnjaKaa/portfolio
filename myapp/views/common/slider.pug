@@ -1,0 +1,68 @@
+.slider
+    .slider-wrap
+        ul.slider__list
+            //- - 
+            //-     var listSlides = [
+            //-             {
+            //-                 title:'Геоотзыв',
+            //-                 tags:'HTML , CSS, JAVASCRIPT',
+            //-                 link: 'https://vlasovaanna.github.io/GeoOpinion/',
+            //-                 img: './assets/images/work-5.png'
+            //-             },
+            //-             {
+            //-                 title:'Библиотека js для вложенных окон',
+            //-                 tags:'JAVASCRIPT, HTML , CSS',
+            //-                 link: 'https://vlasovaanna.github.io/SubWindow/',
+            //-                 img: './assets/images/work-3.png'
+            //-             },
+            //-             {
+            //-                 title:'Видео фон и Swipe-меню',
+            //-                 tags:'HTML , CSS, jQuery',
+            //-                 link: 'https://vlasovaanna.github.io/Video-Swipe/',
+            //-                 img: './assets/images/work-4.png'
+            //-             },
+            //-             {
+            //-                 title:'Самая первая учебная вёрстка',
+            //-                 tags:'HTML , CSS, JAVASCRIPT',
+            //-                 link: 'https://vlasovaanna.github.io/252723-gllacy/',
+            //-                 img: './assets/images/work-1.png'
+            //-             },
+            //-             {
+            //-                 title:'Учебная вёрстка 2',
+            //-                 tags:'HTML , CSS',
+            //-                 link: 'https://vlasovaanna.github.io/252723-device/',
+            //-                 img: './assets/images/work-2.png'
+            //-             }
+
+            //-         ]
+            each item,ndx in listSlides
+                case ndx
+                    when 0
+                        li.slider__item.slider__item--active
+                            .slide
+                                .slide__description
+                                    .slide__title
+                                        h3.title3 #{item.title}
+                                    .slide__tags
+                                        .slide__tags--text #{item.skills}
+                                    a.slide__link.btn(href=`${item.link}` alt=`${item.title}`) Посмотреть сайт
+                                .slide__img
+                                    img.slide__img--img(src=`${item.img}` width='100%' heigth='100%')
+                    default
+                        li.slider__item
+                            .slide
+                                .slide__description
+                                    .slide__title
+                                        h3.title3 #{item.title}
+                                    .slide__tags 
+                                        .slide__tags--text #{item.tags}
+                                    a.slide__link.btn(href=`${item.link}` alt=`${item.title}`) Посмотреть сайт
+                                .slide__img
+                                    img.slide__img--img(src=`${item.img}` width='100%' heigth='100%')
+        .slider__buttons
+            button.slider__buttons--prev(type="button")
+                img.slider__buttons--img
+            button.slider__buttons--next(type="button")
+                img.slider__buttons--img
+
+

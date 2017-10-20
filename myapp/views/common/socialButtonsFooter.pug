@@ -1,0 +1,20 @@
+ul.social-buttons
+	- 
+		var listSB = [
+				{
+					link: 'https://vk.com/anja_kaa',
+					title:'vk'
+				},
+				{
+					link: 'https://github.com/VlaSovaAnna',
+					title:'github'},
+				{
+					link: '#',
+					title:'in'}
+			]
+	each item in listSB
+		li.social-buttons__item
+			a.social-buttons__link(href=`${item.link}` alt=`${item.title}`)
+				svg.social-buttons__icon(width=30 height=23)
+					use(xlink:href='./assets/images/sprite.svg#'+`${item.title}`+'_round')
+				|#{item.title}

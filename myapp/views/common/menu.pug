@@ -1,0 +1,23 @@
+nav.menu
+	//.menu__before
+	//.menu__after
+	ul.menu__list
+		-
+			var listMenu = [
+				{
+					link: './my-works',
+					title:' Мои работы'},
+				{
+					link: './about',
+					title:'Обо мне'},
+				{
+					link: './blog',
+					title:'Блог'},
+				{
+					link: '/',
+					title:'Авторизация'}
+			]
+		each item in listMenu
+			li.menu__item
+				a.menu__link(href=`${item.link}`) #{item.title}
+		

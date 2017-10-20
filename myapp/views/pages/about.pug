@@ -1,0 +1,83 @@
+extends ../template
+
+block variables
+	- var title='Обо мне'
+
+block content
+	.about-wrap.flex-wrap-column
+		include ../common/header.pug
+		section.about
+			.about-columns
+				.about-columns__left
+					svg.triangle-tablet(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1000 85" preserveaspectratio="none")
+						polygon.left(points="0,0   0,86   500.8,86   500.8,75.5")
+						polygon.left(points="1000,0   1000,86   500,86   500,75.5")
+					svg.triangle(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 500 85" preserveaspectratio="none")
+						polygon.left(points="0,0   0,86   500.8,86   500.8,75.5")
+					.about-columns__left-title
+						.title-bg
+						h2.title2 Обо мне
+					.about-columns__left-content
+						.user-description
+							.user-description__image
+								.main_photo__big
+									img(src='./assets/images/photo.jpg')
+							.user-description__title
+								h3.title3 Кто я
+							.user-description__text
+								p Я начинающий веб-разработчик. 
+								p Я занимаюсь разработкой современных сайтов и приложений.
+								|Мне нравится делать интересные и современные проекты.
+								p Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. 
+								|Чуть позже я освежу в нём свой контент. А пока посмотрите,как тут всё классно и красиво!
+				.about-columns__right
+					svg.triangle(xmlns="http://www.w3.org/2000/svg" viewbox="0 0 500 85" preserveaspectratio="none")
+						polygon.right(points="0,75.5   0,86   500.8,86   500.8,0")
+					.about-columns__right-title
+						h3.title3 Чем я могу быть<br> вам полезна
+					.about-columns__right-description
+						p Больше всего меня привлекает Frontend разработка, но я также знакома и могу решать не сложные задачи на Backend. Но давайте по порядку.
+					.about-columns__right-content
+						include ../common/skillsList.pug
+			.about__contacts.contacts
+				.contacts__map.google-map
+					#google-container.google-map__container
+					#zoom-in.google-map__zoom-in
+					#zoom-out.google-map__zoom-out
+				script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNGhz5BDUHMR6ds84jkIo-kd3s9SEdsP0")
+				.contacts__block
+					h3.contacts__title
+						.title3 Контакты
+					ul.contacts__list.contacts-list
+						- 
+							var contactList = [
+								{
+									type: 'skype',
+									value: 'anja.kaa1',
+									icon: './assets/images/sprite.svg#skype'
+								},
+								{
+									type: 'email',
+									value: 'anja_kaa@mail.ru',
+									icon: './assets/images/sprite.svg#envelope'
+								},
+								{
+									type: 'phone',
+									value: '+7-123-456-78-90',
+									icon: './assets/images/sprite.svg#phone'
+								}
+								,
+								{
+									type: 'address',
+									value: 'г. Москва',
+									icon: './assets/images/sprite.svg#map_marker'
+								}
+							]
+						each item in contactList
+							li.contacts-list__item
+								svg.contacts-list__icon(width=24 height=24)
+									use(xlink:href=`${item.icon}`)
+								span.contacts-list__text #{item.value}
+		
+		include ../common/footer.pug
+

@@ -1,0 +1,40 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "_",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./myapp/bin/www"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+<<<<<<< HEAD
+=======
+    "express": "^4.16.1",
+    "formidable": "^1.1.1",
+    "multer": "^1.3.0",
+    "nodemailer": "^4.2.0",
+>>>>>>> f329839bf335606e16f7347912a819e1b24cad28
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "formidable": "^1.1.1",
+    "morgan": "~1.9.0",
+    "multer": "^1.3.0",
+    "nodemailer": "^4.2.0",
+    "pug": "2.0.0-beta11",
+<<<<<<< HEAD
+    "request": "^2.83.0",
+    "serve-favicon": "~2.4.5"
+=======
+    "serve-favicon": "~2.4.5",
+    "mongoose": "~4.12.2",
+    "request": "^2.83.0"
+>>>>>>> f329839bf335606e16f7347912a819e1b24cad28
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
+  }
+}

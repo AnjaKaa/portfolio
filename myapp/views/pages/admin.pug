@@ -1,0 +1,59 @@
+extends ../template
+
+block variables
+    //- var title='Панель администрирования'
+
+block content
+    .admin.flex-wrap-column 
+        header.admin-header
+            h1.admin-title Панель администрирования
+            a.admin-link(href='/') Вернуться на сайт
+        main.admin-main
+            ul.controls
+                li.controls__item.controls__item--active.admin-about__control  Обо мне
+                li.controls__item.admin-blog__control  Блог
+                li.controls__item.admin-works__control  Mои работы
+            .admin-tab-container    
+                section.admin-tab.admin-about
+                    h2.admin-tab__title.admin-about__title Страница 'Обо мне'
+                    .admin-about__content.admin-about__content 
+                        form.admin-about__form(action='/admin/skills' method='POST')
+                            each skillGroup in skillsList
+                                fildset.admin-about__fieldset #{skillGroup.group}
+                                    each skill in skillGroup.skills
+                                        label.skill-setting__name #{skill.name}
+                                            span
+                                                input(type='number' min='0' max='100' step='1' value = `${skill.knowledge}` name=`${skillGroup.group}`+'/'+`${skill.name}`).skill-setting__value
+                                                | %
+                
+                            button.admin-button(type='submit') Сохранить
+                section.admin-tab.admin-blog.off 
+                    h2.admin-tab__title.admin-blog__title Страница 'Блог'
+                    div Добавить запись
+                    .admin-about__content.admin-blog__content 
+                        form(action='/admin/blog' method='POST').admin-blog__form
+                            .row
+                                input.admin-blog__input(type='text' name='title' placeholder='Назвние' required)
+                            .row
+                                input.admin-blog__input(type='text' name='date'  placeholder='Дата' required)
+                            .row
+                                textarea.admin-blog__textarea(cols='50' name='text' rows='7'  placeholder='Содержание' required)
+                            .row
+                                button(type='submit').admin-button Добавить
+                section.admin-tab.admin-works.off 
+                    h2.admin-tab__title.admin-blog__title Страница "Мои работы"
+                    .admin-about__content.admin-blog__content
+                        form(action='/admin/work' method='POST').admin-works__form
+                            .row
+                                input.admin-works__input(type='text' name='title' placeholder='Назвние проекта' required)
+                            .row
+                                input.admin-works__input(type='text' name='skills'  placeholder='Технологии' required)
+                            .row
+                                input.admin-works__input(type='text' name='link'  placeholder='Ссылка' required)
+                            .row
+                                input.admin-works__input(type='file' name='file' required)
+                                label(for='file').load-pic Загрузить картинку
+                            .row
+                                button(type='submit').admin-button Добавить
+                        if (msgblog)
+                            .status = msgblog
