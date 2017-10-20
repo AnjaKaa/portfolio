@@ -1,0 +1,13 @@
+{
+    "db": {
+        "host": "mongodb://<dbuser>:<dbpassword>@ds119395.mlab.com",
+        "port": "19395",
+        "name": "portfolio",
+        "user": "user",
+        "password":"user"
+    },
+    "http": {
+       
+        "server": "https://myapp1kaa.herokuapp.com"
+    }
+}
