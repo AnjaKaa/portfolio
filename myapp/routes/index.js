@@ -2,7 +2,20 @@ var express = require('express');
 var router = express.Router();
 var multer = require('multer');
 
-var upload = multer({ dest: './upload/' });
+var bodyParser = require('body-parser');
+
+//var upload = multer({ dest: './upload/' });
+var storage = multer.diskStorage({
+    destination: function (request, file, callback) {
+      callback(null,  __dirname + './public/assets/images/works');
+    },
+    filename: function (request, file, callback) {
+     
+      callback(null, file.originalname)
+    }
+  });
+
+var upload = multer({dest: './upload/', storage: storage});
 
 const ctrlHome = require('../controllers/homepages');
 const ctrlAbout = require('../controllers/about');
@@ -23,14 +36,15 @@ router.get('/blog', ctrlBlog.getBlog);
 
 router.get('/about', ctrlAbout.getAbout);
 
+var urlencodedParser = bodyParser.urlencoded({extended: false});
 router.get('/admin', ctrlAdmin.getAdmin);
 router.post('/admin/blog',ctrlAdmin.addArticle);
 
-router.post('/admin/skills',ctrlAdmin.updateSkills);
+router.post('/admin/skills', upload.array(),ctrlAdmin.updateSkills);
 
 
 
-router.post('/admin/work', upload.single(),ctrlAdmin.addWork);
+router.post('/admin/work',upload.array(),ctrlAdmin.addWork);
 
 
 

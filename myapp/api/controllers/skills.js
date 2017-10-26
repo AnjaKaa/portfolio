@@ -77,6 +77,7 @@ module.exports.getSkills = function(req,res) {
 
 
 module.exports.updateSkills = function(req, res){
+    console.log(req.body);
     let Model = mongoose.model('skill');
     models=req.body;
     // if (models.filter(m => m.validateSync()).length) {

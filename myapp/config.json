@@ -7,7 +7,21 @@
         "password":"user"
     },
     "http": {
-       
-        "server": "https://myapp1kaa.herokuapp.com"
+        "port": 3000,
+        "host": "localhost",
+        "publicRoot": "public",
+        "server": "http://localhost:3000"
+    },
+    "mail": {
+        "subject": "Cообщение с сайта-портфолио",
+        "smtp": {
+            "host": "smtp.gmail.com",
+            "port": 465,
+            "secure": true,
+            "auth": {
+                "user": "anja.kaa@gmail.com",
+                "pass": "vjzHf,jnf"
+            }   
+        }
     }
 }

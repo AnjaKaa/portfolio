@@ -53,8 +53,8 @@ module.exports.createWork = function(req,res){
     let item = new Model({
         title: req.body.title,
         skills: req.body.skills,
-        link: req.body.link//,
-        //img: req.body.img
+        link: req.body.link,
+        img: req.body.file
     });
 
     item.save()

@@ -17,7 +17,7 @@ block content
                 section.admin-tab.admin-about
                     h2.admin-tab__title.admin-about__title Страница 'Обо мне'
                     .admin-about__content.admin-about__content 
-                        form.admin-about__form(action='/admin/skills' method='POST')
+                        form.admin-about__form.admin-form(action='/admin/skills' method='POST')#admin-skills-form
                             each skillGroup in skillsList
                                 fildset.admin-about__fieldset #{skillGroup.group}
                                     each skill in skillGroup.skills
@@ -26,12 +26,12 @@ block content
                                                 input(type='number' min='0' max='100' step='1' value = `${skill.knowledge}` name=`${skillGroup.group}`+'/'+`${skill.name}`).skill-setting__value
                                                 | %
                 
-                            button.admin-button(type='submit') Сохранить
+                            button.admin-button(type='submit')#btn_skills Сохранить
                 section.admin-tab.admin-blog.off 
                     h2.admin-tab__title.admin-blog__title Страница 'Блог'
                     div Добавить запись
                     .admin-about__content.admin-blog__content 
-                        form(action='/admin/blog' method='POST').admin-blog__form
+                        form(action='/admin/blog' method='POST').admin-blog__form.admin-form#admin-blog-form
                             .row
                                 input.admin-blog__input(type='text' name='title' placeholder='Назвние' required)
                             .row
@@ -39,11 +39,11 @@ block content
                             .row
                                 textarea.admin-blog__textarea(cols='50' name='text' rows='7'  placeholder='Содержание' required)
                             .row
-                                button(type='submit').admin-button Добавить
+                                button(type='submit').admin-button#btn_blog Добавить
                 section.admin-tab.admin-works.off 
                     h2.admin-tab__title.admin-blog__title Страница "Мои работы"
                     .admin-about__content.admin-blog__content
-                        form(action='/admin/work' method='POST').admin-works__form
+                        form(action='/admin/work' method='POST').admin-works__form.admin-form#admin-works-form
                             .row
                                 input.admin-works__input(type='text' name='title' placeholder='Назвние проекта' required)
                             .row
@@ -51,9 +51,12 @@ block content
                             .row
                                 input.admin-works__input(type='text' name='link'  placeholder='Ссылка' required)
                             .row
-                                input.admin-works__input(type='file' name='file' required)
-                                label(for='file').load-pic Загрузить картинку
+                                input.admin-works__input.load-pic(type='file' name='file' id= 'file' required)
+                                label(for='file').load-pic__label 
+                                    svg.load-pic__icon(width=30 height=23)
+                                        use(xlink:href='./assets/images/sprite.svg#Load_pic_icon')
+                                    span.load-pic__text Загрузить картинку
                             .row
-                                button(type='submit').admin-button Добавить
+                                button(type='submit').admin-button#btn_works Добавить
                         if (msgblog)
                             .status = msgblog

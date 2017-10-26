@@ -3,8 +3,8 @@ const config = require('../config.json');
 const http = require('request');
 
 const apiOptions = {
-    server: 'http://localhost:3000'
-  }
+    server: config.http.server
+}
 
 module.exports.getWorks = function(req, res) {
     const pathAPI = '/api/work';

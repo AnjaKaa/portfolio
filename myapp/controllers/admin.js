@@ -2,7 +2,6 @@ const formidable = require('formidable');
 const http = require('request');
 const mongoose = require('mongoose');
 
-
 const config = require('../config.json');
 
 const apiOptions = {
@@ -33,6 +32,7 @@ module.exports.getAdmin = function(req, res) {
   };
 
 module.exports.updateSkills = function(req, res) {
+  console.log(req.body);
    let skills =[];
    let models =[];
    Object.keys(req.body).map(name =>{
@@ -73,7 +73,8 @@ module.exports.updateSkills = function(req, res) {
   };
   http(requestOptions, function(error,respoce,body) {
      
-    res.redirect('/admin?msgskill=' + body.ststus);
+    //res.redirect('/admin?msgskill=' + body.ststus);
+    res.json({message: 'Сохранено!'})
   })
 };
 
@@ -92,14 +93,14 @@ module.exports.addArticle = function(req, res) {
     };
 
     http(requestOptions, function(error,respoce,body) {
-      res.redirect('/admin?msgblog=' + body.ststus);
+      //res.redirect('/admin?msgblog=' + body.ststus);
+      res.json({message: 'Запись в блог добавлена!'})
     })
   };
 
 module.exports.addWork = function(req, res) {
-   
+        console.log(req.body);
 
-    
         const pathApi = '/api/work';
         const requestOptions = {
           url: apiOptions.server + pathApi,
@@ -111,12 +112,14 @@ module.exports.addWork = function(req, res) {
             file: req.body.file
           }
         };
+        
     
         http(requestOptions, function(error,respoce,body) {
           if (error) {
-            return res.redirect('/admin?msgfile=Картинка не сохранилась в БД');
+            return  res.json({'message': 'Картинка не сохранилась в БД'});
           }
-          res.redirect('/admin?msgworks=' + body.ststus);
+         // res.redirect('/admin?msgworks=' + body.ststus);
+         res.json({message: 'Запись добавлена в список работ!'})
         })
       
   };

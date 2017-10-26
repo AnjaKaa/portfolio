@@ -15,7 +15,7 @@ let mongoose = require('mongoose'),
             require: [true,'Укажите ссылку на проект']
         },
         img: {
-            type: [String]
+            type: String
         }
     });
 
