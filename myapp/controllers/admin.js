@@ -17,10 +17,11 @@ module.exports.getAdmin = function(req, res) {
         method: 'GET'
       };
       const sendObj = { 
-        'title': 'Панель администрирования',
-        'msgblog': req.query.msgblog,
-        'msgworks': req.query.msgworks,
-        'msgskill': req.query.msgskill
+        'title': 'Панель администрирования'
+        // ,
+        // 'msgblog': req.query.msgblog,
+        // 'msgworks': req.query.msgworks,
+        // 'msgskill': req.query.msgskill
       };
 
       http(requestOptions, function(error,response,body){

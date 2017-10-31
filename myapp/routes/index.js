@@ -39,11 +39,7 @@ router.get('/about', ctrlAbout.getAbout);
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 router.get('/admin', ctrlAdmin.getAdmin);
 router.post('/admin/blog',ctrlAdmin.addArticle);
-
 router.post('/admin/skills', upload.array(),ctrlAdmin.updateSkills);
-
-
-
 router.post('/admin/work',upload.array(),ctrlAdmin.addWork);
 
 

@@ -17,9 +17,7 @@ module.exports.getWorks = function(req, res) {
     };
 
     http(requestOptions, function(error,response,body){
-     
       sendObj.listSlides = JSON.parse(body).listSlides;
-      console.log(sendObj)
       res.render('pages/my-works', sendObj);
     });
   };
