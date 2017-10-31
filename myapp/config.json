@@ -19,8 +19,8 @@
             "port": 465,
             "secure": true,
             "auth": {
-                "user": "anja.kaa@gmail.com",
-                "pass": "vjzHf,jnf"
+                "user": "anja.kaa.portfolio@gmail.com",
+                "pass": "portfolio"
             }   
         }
     }

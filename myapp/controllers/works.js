@@ -38,7 +38,7 @@ module.exports.sendEmail = function(req, res) {
     const transporter = nodemailr.createTransport(config.mail.smtp);
     const mailOptions = {
         from: `"${req.body.name}" <${req.body.email}>`,
-        to: config.mail.auth.user,
+        to: config.mail.smtp.auth.user,
         subject: config.mail.subject,
         text: req
             .body
@@ -46,14 +46,17 @@ module.exports.sendEmail = function(req, res) {
             .trim()
             .slice(0,500)+ `\n Отправлено с <${req.body.email}>`
     }
-    transporter.sendEmail(mailOptions, function (error, info){
+    console.log(mailOptions);
+    transporter.sendMail(mailOptions, function (error, info){
+        console.log(error);
+        console.log(info);
         if (error) {
             console.log(error);
-            return res.redirect('/?msg = При отправке произошла ошибка');
+            return res.json({message: 'При отправке произошла ошибка'+error});
         }
         
-    console.log(req.body);
-        res.redirect('/?msg=Письмо успешно отправлено')
+    //console.log(req.body);
+        res.json({message: 'Письмо успешно отправлено'})
     })
   };
 
