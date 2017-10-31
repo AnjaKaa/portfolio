@@ -82,6 +82,7 @@ module.exports.updateSkills = function(req, res) {
 
 
 module.exports.addArticle = function(req, res) {
+  console.log( req.body);
     const pathApi = '/api/blog';
     const requestOptions = {
       url: apiOptions.server + pathApi,

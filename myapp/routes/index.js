@@ -7,10 +7,9 @@ var bodyParser = require('body-parser');
 //var upload = multer({ dest: './upload/' });
 var storage = multer.diskStorage({
     destination: function (request, file, callback) {
-      callback(null,  __dirname + './public/assets/images/works');
+      callback(null,  __dirname + '/public/assets/images/works');
     },
     filename: function (request, file, callback) {
-     
       callback(null, file.originalname)
     }
   });
@@ -38,7 +37,7 @@ router.get('/about', ctrlAbout.getAbout);
 
 var urlencodedParser = bodyParser.urlencoded({extended: false});
 router.get('/admin', ctrlAdmin.getAdmin);
-router.post('/admin/blog',ctrlAdmin.addArticle);
+router.post('/admin/blog',upload.array(),ctrlAdmin.addArticle);
 router.post('/admin/skills', upload.array(),ctrlAdmin.updateSkills);
 router.post('/admin/work',upload.array(),ctrlAdmin.addWork);
 

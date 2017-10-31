@@ -33,14 +33,14 @@ module.exports.getArticles = function(req,res) {
 
 module.exports.createArticle = function(req,res){
     const Model = mongoose.model('blog');
-
+    console.log(req.body);
     let item = new Model({
         title: req.body.title,
         date: new Date(req.body.date),
         text: req.body.text
     });
 
-    console.log(item);
+    console.log('item',item);
 
     item.save()
         .then(item =>{

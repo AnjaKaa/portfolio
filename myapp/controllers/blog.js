@@ -16,7 +16,6 @@ module.exports.getBlog = function(req, res, next) {
     };
 
     http(requestOptions, function(error,response,body){
-     
       sendObj.articles = JSON.parse(body).articles;
       console.log(sendObj)
       res.render('pages/blog', sendObj);
