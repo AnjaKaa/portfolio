@@ -4,7 +4,8 @@
   "description": "_",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./myapp/bin/www"
+    "start": "node ./myapp/bin/www",
+    "dev": "nodemon ./myapp/bin/www"
   },
   "author": "",
   "license": "ISC",

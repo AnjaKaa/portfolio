@@ -10,7 +10,7 @@
         "port": 3000,
         "host": "localhost",
         "publicRoot": "public",
-        "server": "http://localhost:3000"
+        "server": "http://localhost:git commit3000"
     },
     "mail": {
         "subject": "Cообщение с сайта-портфолио",
